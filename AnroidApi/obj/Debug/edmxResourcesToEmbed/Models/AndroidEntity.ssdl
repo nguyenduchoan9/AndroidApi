@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AndroidAutumnModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Anwser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnswerPara" Type="nvarchar" MaxLength="500" />
+    <Property Name="QuestionId" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MarkTest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MarkTest" Type="float" />
+    <Property Name="TestTopic" Type="int" />
+    <Property Name="AccountId" Type="int" />
+  </EntityType>
+  <EntityType Name="PostAward">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountId" Type="int" />
+    <Property Name="QuestionId" Type="int" />
+    <Property Name="AnswerId" Type="int" />
+    <Property Name="FillAnswer" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionPara" Type="nvarchar" MaxLength="500" />
+    <Property Name="Type" Type="int" />
+    <Property Name="TopicId" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TestTopic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="TopicTest" Type="nvarchar" MaxLength="200" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <Association Name="FK_Anwser_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Anwser" Type="Self.Anwser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Anwser">
+        <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Class">
+    <End Role="Class" Type="Self.Class" Multiplicity="1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MarkTest_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="MarkTest" Type="Self.MarkTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MarkTest">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MarkTest_TestTopic">
+    <End Role="TestTopic" Type="Self.TestTopic" Multiplicity="0..1" />
+    <End Role="MarkTest" Type="Self.MarkTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestTopic">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MarkTest">
+        <PropertyRef Name="TestTopic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostAward_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="PostAward" Type="Self.PostAward" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostAward">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostAward_Anwser">
+    <End Role="Anwser" Type="Self.Anwser" Multiplicity="0..1" />
+    <End Role="PostAward" Type="Self.PostAward" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Anwser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostAward">
+        <PropertyRef Name="AnswerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostAward_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="PostAward" Type="Self.PostAward" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostAward">
+        <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_TestTopic">
+    <End Role="TestTopic" Type="Self.TestTopic" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestTopic">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="TopicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestTopic_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="TestTopic" Type="Self.TestTopic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TestTopic">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AndroidAutumnModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Anwser" EntityType="Self.Anwser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MarkTest" EntityType="Self.MarkTest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostAward" EntityType="Self.PostAward" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TestTopic" EntityType="Self.TestTopic" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Anwser_Question" Association="Self.FK_Anwser_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Anwser" EntitySet="Anwser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_Account" Association="Self.FK_Class_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Class" EntitySet="Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Class" Association="Self.FK_Course_Class">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Subject" Association="Self.FK_Course_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MarkTest_Account" Association="Self.FK_MarkTest_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="MarkTest" EntitySet="MarkTest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MarkTest_TestTopic" Association="Self.FK_MarkTest_TestTopic">
+      <End Role="TestTopic" EntitySet="TestTopic" />
+      <End Role="MarkTest" EntitySet="MarkTest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostAward_Account" Association="Self.FK_PostAward_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="PostAward" EntitySet="PostAward" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostAward_Anwser" Association="Self.FK_PostAward_Anwser">
+      <End Role="Anwser" EntitySet="Anwser" />
+      <End Role="PostAward" EntitySet="PostAward" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostAward_Question" Association="Self.FK_PostAward_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="PostAward" EntitySet="PostAward" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_TestTopic" Association="Self.FK_Question_TestTopic">
+      <End Role="TestTopic" EntitySet="TestTopic" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestTopic_Course" Association="Self.FK_TestTopic_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="TestTopic" EntitySet="TestTopic" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
