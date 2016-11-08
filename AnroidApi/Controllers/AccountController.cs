@@ -32,30 +32,35 @@ namespace AnroidApi.Controllers
             string msg = "";
 
             AccountRepository accountRepository = new AccountRepository();
-            Account account = accountRepository.Login(username, password);
-
-            if (null == account)
-            {
-                msg = "Invalid username or password";
-                return Json(new
-                {
-                    exist = false,
-                    message = msg,
-                    accountModel = "null"
-                });
-
-            }
+            //            Account account = accountRepository.Login(username, password);
+            //
+            //            if (null == account)
+            //            {
+            //                msg = "Invalid username or password";
+            //                return Json(new
+            //                {
+            //                    exist = false,
+            //                    message = msg,
+            //                    accountModel = "null"
+            //                });
+            //
+            //            }
+            //            return Json(new
+            //            {
+            //                exist = true,
+            //                message = msg,
+            //                accountModel = new
+            //                {
+            //                    Id = account.Id,
+            //                    Username = account.Username,
+            //                    Email = account.Email,
+            //                    Role = account.Role
+            //                }
+            //            });
             return Json(new
             {
                 exist = true,
-                message = msg,
-                accountModel = new
-                {
-                    Id = account.Id,
-                    Username = account.Username,
-                    Email = account.Email,
-                    Role = account.Role
-                }
+                message = "success"
             });
         }
 
