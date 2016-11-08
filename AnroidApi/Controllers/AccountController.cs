@@ -58,5 +58,16 @@ namespace AnroidApi.Controllers
                 }
             });
         }
+
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("Login")]
+        public IHttpActionResult getExist()
+        {
+            return Json(new
+            {
+                exist = true,
+                message = "success"
+            });
+        }
     }
 }
