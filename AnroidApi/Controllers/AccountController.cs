@@ -1,32 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using System.Web;
+
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using System.Web.Http.Results;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using AnroidApi.Models;
 using AnroidApi.Models.Data;
-using AnroidApi.Providers;
-using AnroidApi.Results;
 
 namespace AnroidApi.Controllers
 {
-    [System.Web.Http.RoutePrefix("api/v1/Account")]
+    [RoutePrefix("api/v1/Account")]
     public class AccountController : ApiController
     {
-        [System.Web.Http.HttpPost]
-        [System.Web.Http.Route("Login")]
+        [HttpPost]
+        [Route("Login")]
         public IHttpActionResult Login(string username, string password)
         {
             string msg = "";
@@ -64,8 +48,8 @@ namespace AnroidApi.Controllers
             });
         }
 
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("Login")]
+        [HttpGet]
+        [Route("Login")]
         public IHttpActionResult getExist()
         {
             return Json(new
@@ -75,4 +59,7 @@ namespace AnroidApi.Controllers
             });
         }
     }
+
+    //http://stackoverflow.com/questions/20901419/how-to-call-stored-procedure-in-entity-framework-6-code-first
+    //https://msdn.microsoft.com/en-us/library/ms345415.aspx
 }

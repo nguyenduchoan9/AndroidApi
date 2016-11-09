@@ -7,18 +7,17 @@ using System.Web;
 
 namespace AnroidApi.Models.Data
 {
-    public class AccountRepository
-    {
-        private AndAuEntities _db;
+    public class AccountRepository : BaseRepository
+    { 
 
         public AccountRepository()
         {
-            this._db = new AndAuEntities();
+            _db = new AndAuEntities();
         }
 
         public  Account Login(string username, string password)
         {
-            Account account =  this._db.Accounts.SingleOrDefault(x => x.Username == username && x.Password == password);
+            Account account =  _db.Accounts.SingleOrDefault(x => x.Username == username && x.Password == password);
             
 
             return account;

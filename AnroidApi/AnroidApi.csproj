@@ -277,6 +277,13 @@
       <DependentUpon>AndroidEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\AccountRepository.cs" />
+    <Compile Include="Models\Data\AnwserRepository.cs" />
+    <Compile Include="Models\Data\BaseRepository.cs" />
+    <Compile Include="Models\Data\ClassRepository.cs" />
+    <Compile Include="Models\Data\CourseRepository.cs" />
+    <Compile Include="Models\Data\QuestionRepository.cs" />
+    <Compile Include="Models\Data\SubjectRepository.cs" />
+    <Compile Include="Models\Data\TestTopicRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MarkTest.cs">
       <DependentUpon>AndroidEntity.tt</DependentUpon>
