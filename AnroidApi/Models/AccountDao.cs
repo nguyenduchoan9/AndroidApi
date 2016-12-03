@@ -7,21 +7,49 @@ namespace AnroidApi.Models
 {
     public class AccountDao
     {
-        BookManagementEntities entity;
+        BookManagementEntities db;
         public AccountDao()
         {
-            entity = new BookManagementEntities();
+            db = new BookManagementEntities();
         }
 
         public bool Login(String mail, String password)
         {
             bool exist = false;
 
-            var user = entity.Users.SingleOrDefault(x => x.Email.Equals(mail) && password.Equals(password));
+            var user = db.Users.SingleOrDefault(x => x.Email.Equals(mail) && password.Equals(password));
 
             exist = user != null ? true : false;
 
             return exist;
         }
+        public bool CreateUser(User user)
+        {
+            try
+            {
+                var entity = new User
+                {
+                    Email = user.Email,
+                    Name = user.Name,
+                    Phone = user.Phone,
+                    Pass = user.Pass,
+                    DOB = user.DOB,
+                    Sex = user.Sex,
+                    RoleID = user.RoleID,
+                    StatusID = user.StatusID,
+                    Address = user.Address,
+                    RegDate = System.DateTime.Now,
+                    Img_Link = user.Img_Link
+                };
+                db.Users.Add(entity);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }
