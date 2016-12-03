@@ -269,6 +269,7 @@
     <Compile Include="Models\BookStatu.cs">
       <DependentUpon>BookEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BookViewModel .cs" />
     <Compile Include="Models\Genre.cs">
       <DependentUpon>BookEntity.tt</DependentUpon>
     </Compile>

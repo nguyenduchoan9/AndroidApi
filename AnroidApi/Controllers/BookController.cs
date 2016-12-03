@@ -18,9 +18,15 @@ namespace AnroidApi.Controllers
         {
             BookDAO dao = new BookDAO();
             var books = dao.ListBook().ToList();
+
+            List<BookViewModel> viewModels = new List<BookViewModel>();
+            foreach(Book book in books){
+                BookViewModel viewmodel = new BookViewModel(book);
+                viewModels.Add(viewmodel);
+            }
             return Json(new
             {
-                books
+               result = viewModels
             });
         }
 
@@ -30,9 +36,10 @@ namespace AnroidApi.Controllers
         {
             BookDAO dao = new BookDAO();
             var book = dao.BookDetail(bookId);
+            BookViewModel viewmodel = new BookViewModel(book);
             return Json(new
             {
-                book
+                result = viewmodel
             });
         }
 
@@ -42,9 +49,15 @@ namespace AnroidApi.Controllers
         {
             BookDAO dao = new BookDAO();
             var books = dao.GetByAuthor(authorId).ToList();
+            List<BookViewModel> viewModels = new List<BookViewModel>();
+            foreach (Book book in books)
+            {
+                BookViewModel viewmodel = new BookViewModel(book);
+                viewModels.Add(viewmodel);
+            }
             return Json(new
             {
-                books
+                result = viewModels
             });
         }
     }
