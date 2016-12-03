@@ -47,7 +47,7 @@ namespace AnroidApi.Models
         public List<Book> GetByGenre(int Type)
         {
             IQueryable<Book> model = _db.Books;
-            return model.OrderBy(b => b.Genre).Where(b => b.GenreID == Type).ToList();
+            return model.Where(b => b.GenreID == Type).ToList();
         }
     }
 }
