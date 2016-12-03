@@ -88,9 +88,6 @@ E:\C#source\AnroidApi\AnroidApi\bin\System.Web.Http.Owin.xml
 E:\C#source\AnroidApi\AnroidApi\obj\Debug\AnroidApi.csprojResolveAssemblyReference.cache
 E:\C#source\AnroidApi\AnroidApi\obj\Debug\AnroidApi.dll
 E:\C#source\AnroidApi\AnroidApi\obj\Debug\AnroidApi.pdb
-C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\obj\Debug\AnroidApi.csprojResolveAssemblyReference.cache
-C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\obj\Debug\AnroidApi.dll
-C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\obj\Debug\AnroidApi.pdb
 C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\bin\ApplicationInsights.config
 C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\bin\roslyn\csc.exe
 C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -178,3 +175,5 @@ C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\bin\Microsoft.Owin.Security.Googl
 C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\bin\System.Web.Http.Owin.xml
+C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\obj\Debug\AnroidApi.dll
+C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\obj\Debug\AnroidApi.pdb

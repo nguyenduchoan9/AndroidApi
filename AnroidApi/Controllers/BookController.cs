@@ -14,7 +14,7 @@ namespace AnroidApi.Controllers
 
         [HttpGet]
         [Route("GetBook")]
-        public IHttpActionResult GetBook(String mail, String password)
+        public IHttpActionResult GetBook()
         {
             BookDAO dao = new BookDAO();
             var books = dao.ListBook().ToList();
