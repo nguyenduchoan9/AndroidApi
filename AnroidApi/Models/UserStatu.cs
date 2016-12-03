@@ -12,20 +12,18 @@ namespace AnroidApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Class
+    public partial class UserStatu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Class()
+        public UserStatu()
         {
-            this.Courses = new HashSet<Course>();
+            this.Users = new HashSet<User>();
         }
     
-        public int Id { get; set; }
-        public string ClassName { get; set; }
-        public int AccountId { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
     
-        public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

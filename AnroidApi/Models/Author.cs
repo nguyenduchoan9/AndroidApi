@@ -12,25 +12,20 @@ namespace AnroidApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Question
+    public partial class Author
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Question()
+        public Author()
         {
-            this.Anwsers = new HashSet<Anwser>();
-            this.PostAwards = new HashSet<PostAward>();
+            this.Books = new HashSet<Book>();
         }
     
-        public int Id { get; set; }
-        public string QuestionPara { get; set; }
-        public Nullable<int> Type { get; set; }
-        public Nullable<int> TopicId { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> Age { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Anwser> Anwsers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PostAward> PostAwards { get; set; }
-        public virtual TestTopic TestTopic { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
     }
 }

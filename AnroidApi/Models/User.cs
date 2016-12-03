@@ -12,24 +12,30 @@ namespace AnroidApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TestTopic
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TestTopic()
+        public User()
         {
-            this.MarkTests = new HashSet<MarkTest>();
-            this.Questions = new HashSet<Question>();
+            this.Orders = new HashSet<Order>();
         }
     
-        public int Id { get; set; }
-        public int CourseId { get; set; }
-        public string TopicTest { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Pass { get; set; }
+        public int RoleID { get; set; }
+        public System.DateTime DOB { get; set; }
+        public bool Sex { get; set; }
+        public string Img_Link { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public System.DateTime RegDate { get; set; }
+        public int StatusID { get; set; }
     
-        public virtual Course Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MarkTest> MarkTests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual Role Role { get; set; }
+        public virtual UserStatu UserStatu { get; set; }
     }
 }

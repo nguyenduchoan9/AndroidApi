@@ -12,21 +12,18 @@ namespace AnroidApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Anwser
+    public partial class OrderStatu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Anwser()
+        public OrderStatu()
         {
-            this.PostAwards = new HashSet<PostAward>();
+            this.Orders = new HashSet<Order>();
         }
     
-        public int Id { get; set; }
-        public string AnswerPara { get; set; }
-        public Nullable<int> QuestionId { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
     
-        public virtual Question Question { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PostAward> PostAwards { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

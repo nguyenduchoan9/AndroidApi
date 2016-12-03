@@ -12,16 +12,15 @@ namespace AnroidApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PostAward
+    public partial class OrderDetail
     {
-        public int Id { get; set; }
-        public Nullable<int> AccountId { get; set; }
-        public Nullable<int> QuestionId { get; set; }
-        public Nullable<int> AnswerId { get; set; }
-        public string FillAnswer { get; set; }
+        public int ID { get; set; }
+        public int BookID { get; set; }
+        public int Quantity { get; set; }
+        public double Price { get; set; }
+        public int OrderID { get; set; }
     
-        public virtual Account Account { get; set; }
-        public virtual Anwser Anwser { get; set; }
-        public virtual Question Question { get; set; }
+        public virtual Book Book { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

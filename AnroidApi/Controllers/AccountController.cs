@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using System.Web.Http;
-using AnroidApi.Models.Data;
+using AnroidApi.Models;
 
 namespace AnroidApi.Controllers
 {
@@ -13,9 +13,7 @@ namespace AnroidApi.Controllers
         [Route("Login")]
         public IHttpActionResult Login(string username, string password)
         {
-            string msg = "";
-
-            AccountRepository accountRepository = new AccountRepository();
+           
             //            Account account = accountRepository.Login(username, password);
             //
             //            if (null == account)
@@ -50,11 +48,13 @@ namespace AnroidApi.Controllers
 
         [HttpGet]
         [Route("Login")]
-        public IHttpActionResult getExist()
+        public IHttpActionResult getExist(String mail, String password)
         {
+            AccountDao dao = new AccountDao();
+            bool exist = dao.Login(mail, password);
             return Json(new
             {
-                exist = true,
+                exist = exist,
                 message = "success"
             });
         }

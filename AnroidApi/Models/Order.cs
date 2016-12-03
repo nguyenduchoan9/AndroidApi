@@ -12,21 +12,27 @@ namespace AnroidApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Course
+    public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Course()
+        public Order()
         {
-            this.TestTopics = new HashSet<TestTopic>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
-        public int Id { get; set; }
-        public int ClassId { get; set; }
-        public int SubjectId { get; set; }
+        public int ID { get; set; }
+        public string UserName { get; set; }
+        public int UserID { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public System.DateTime EndDate { get; set; }
+        public int StatusID { get; set; }
+        public string Note { get; set; }
+        public string Address { get; set; }
+        public System.DateTime CreatedDate { get; set; }
     
-        public virtual Class Class { get; set; }
-        public virtual Subject Subject { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TestTopic> TestTopics { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual OrderStatu OrderStatu { get; set; }
+        public virtual User User { get; set; }
     }
 }
