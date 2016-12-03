@@ -13,7 +13,7 @@ namespace AnroidApi.Models
         {
             _db = new BookManagementEntities();
         }
-        public IEnumerable<Book> ListBook(string searchkey, int page, int pageSize)
+        public IEnumerable<Book> ListBook(string searchkey)
         {
             IQueryable<Book> model = _db.Books;
             if (!string.IsNullOrEmpty(searchkey))
@@ -23,6 +23,7 @@ namespace AnroidApi.Models
             return model.OrderBy(b => b.AddedDate.Day);
 
         }
+
 
         public List<Book> ListBook()
         {
@@ -43,5 +44,10 @@ namespace AnroidApi.Models
             return model.OrderBy(m => m.Name).Where(m => m.AuthorID == authorID).ToList();
         }
 
+        public List<Book> GetByGenre(int Type)
+        {
+            IQueryable<Book> model = _db.Books;
+            return model.OrderBy(b => b.Genre).Where(b => b.GenreID == Type).ToList();
+        }
     }
 }
