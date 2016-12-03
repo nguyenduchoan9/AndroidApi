@@ -10,7 +10,7 @@ namespace AnroidApi.Controllers
     public class AccountController : ApiController
     {
         [HttpPost]
-        [Route("Login")]
+        [Route("Loginaa")]
         public IHttpActionResult Login(string username, string password)
         {
            
@@ -48,14 +48,21 @@ namespace AnroidApi.Controllers
 
         [HttpGet]
         [Route("Login")]
-        public IHttpActionResult getExist(String mail, String password)
+        public IHttpActionResult getAccount(String mail, String password)
         {
             AccountDao dao = new AccountDao();
-            bool exist = dao.Login(mail, password);
+            var user = dao.Login(mail, password);
+            if(user == null)
+            {
+                return Json(new
+                {
+                    user
+                });
+            }
+            UserViewModels viewmodel = new UserViewModels(user);
             return Json(new
             {
-                exist = exist,
-                message = "success"
+                viewmodel
             });
         }
     }

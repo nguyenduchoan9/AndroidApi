@@ -177,3 +177,4 @@ C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\bin\Microsoft.Owin.Security.Micro
 C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\bin\System.Web.Http.Owin.xml
 C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\obj\Debug\AnroidApi.dll
 C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\obj\Debug\AnroidApi.pdb
+C:\Users\NHAT NAM\Desktop\AndroidApi\AnroidApi\obj\Debug\AnroidApi.csprojResolveAssemblyReference.cache

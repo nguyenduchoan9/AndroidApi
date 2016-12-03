@@ -13,7 +13,7 @@ namespace AnroidApi.Models
             db = new BookManagementEntities();
         }
 
-        public bool Login(String mail, String password)
+        public User Login(String mail, String password)
         {
             bool exist = false;
 
@@ -21,7 +21,11 @@ namespace AnroidApi.Models
 
             exist = user != null ? true : false;
 
-            return exist;
+            if (exist)
+            {
+                return user;
+            }
+            return null;
         }
         public bool CreateUser(User user)
         {
