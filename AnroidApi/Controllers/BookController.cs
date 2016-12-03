@@ -60,5 +60,42 @@ namespace AnroidApi.Controllers
                 results = viewModels
             });
         }
+
+        [HttpGet]
+        [Route("SeachKey")]
+        public IHttpActionResult GetBookByKeySearch(String keySearch)
+        {
+            BookDAO dao = new BookDAO();
+            var books = dao.ListBook(keySearch).ToList();
+            List<BookViewModel> viewModels = new List<BookViewModel>();
+            foreach (Book book in books)
+            {
+                BookViewModel viewmodel = new BookViewModel(book);
+                viewModels.Add(viewmodel);
+            }
+            return Json(new
+            {
+                results = viewModels
+            });
+        }
+
+        [HttpGet]
+        [Route("SearchByCategory")]
+        public IHttpActionResult GetBookByCategory(String categoryS)
+        {
+            BookDAO dao = new BookDAO();
+            int category = Int32.Parse(categoryS);
+            var books = dao.GetByGenre(category);
+            List<BookViewModel> viewModels = new List<BookViewModel>();
+            foreach (Book book in books)
+            {
+                BookViewModel viewmodel = new BookViewModel(book);
+                viewModels.Add(viewmodel);
+            }
+            return Json(new
+            {
+                results = viewModels
+            });
+        }
     }
 }
