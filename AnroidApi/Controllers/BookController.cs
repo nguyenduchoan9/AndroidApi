@@ -26,7 +26,7 @@ namespace AnroidApi.Controllers
             }
             return Json(new
             {
-               viewModels
+               results=viewModels
             });
         }
 
@@ -39,7 +39,7 @@ namespace AnroidApi.Controllers
             BookViewModel viewmodel = new BookViewModel(book);
             return Json(new
             {
-                viewmodel
+                results = viewmodel
             });
         }
 
@@ -57,7 +57,7 @@ namespace AnroidApi.Controllers
             }
             return Json(new
             {
-                viewModels
+                results = viewModels
             });
         }
     }
