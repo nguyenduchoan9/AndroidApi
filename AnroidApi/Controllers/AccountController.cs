@@ -56,7 +56,40 @@ namespace AnroidApi.Controllers
             {
                 return Json(new
                 {
-                    user
+                    result = new UserViewModels()
+            });
+            }
+            UserViewModels viewmodel = new UserViewModels(user);
+            return Json(new
+            {
+                viewmodel
+            });
+        }
+
+        [HttpGet]
+        [Route("Register")]
+        public IHttpActionResult registerAccount(String name, String password, String email, String phone, String sex, String address)
+        {
+            User user = new User()
+            {
+                Name = name,
+                Email = email,
+                Phone = phone,
+                Sex = sex.Equals("1") ? true : false,
+                Address = address,
+                DOB = System.DateTime.Now,
+                RoleID = 2,
+                Img_Link = "",
+                StatusID = 1,
+                RegDate  = System.DateTime.Now
+            };
+            AccountDao dao = new AccountDao();
+            var userEntity= dao.CreateUser(user);
+            if (userEntity == null)
+            {
+                return Json(new
+                {
+                    result = new UserViewModels()
                 });
             }
             UserViewModels viewmodel = new UserViewModels(user);
