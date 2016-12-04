@@ -12,25 +12,40 @@ namespace AnroidApi.Models
         {
             db = new BookManagementEntities();
         }
-        public bool createOrder(Order order)
+        public bool createOrder(String username, int userId, String note, String address, int bookId, double price)
         {
             try
             {
                 var entity = new Order
                 {
-                    ID = order.ID,
-                    UserName = order.UserName,
-                    UserID = order.UserID,
-                    StartDate = order.StartDate,
-                    EndDate = order.EndDate,
-                    StatusID = order.StatusID,
-                    Note = order.Note,
-                    Address = order.Address,
-                    CreatedDate = order.CreatedDate,
+                    UserName = username,
+                    UserID = userId,
+                    StartDate = System.DateTime.Now,
+                    EndDate = System.DateTime.Now,
+                    StatusID = 1,
+                    Note = note,
+                    Address = address,
+                    CreatedDate = System.DateTime.Now,
                 };
                 db.Orders.Add(entity);
-                db.SaveChanges();
-                return true;
+                int ac = db.SaveChanges();
+                if (ac > 0)
+                {
+                    OrderDetail od = new OrderDetail
+                    {
+                        BookID = bookId,
+                        Quantity = 1,
+                        Price = price
+                    };
+                    db.OrderDetails.Add(od);
+                    int rs = db.SaveChanges();
+                    if (rs > 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
             }
             catch
             {
