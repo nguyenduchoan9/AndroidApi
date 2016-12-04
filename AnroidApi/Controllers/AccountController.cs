@@ -62,7 +62,7 @@ namespace AnroidApi.Controllers
             UserViewModels viewmodel = new UserViewModels(user);
             return Json(new
             {
-                viewmodel
+                result = viewmodel
             });
         }
 
@@ -95,7 +95,7 @@ namespace AnroidApi.Controllers
             UserViewModels viewmodel = new UserViewModels(user);
             return Json(new
             {
-                viewmodel
+                result = viewmodel
             });
         }
     }

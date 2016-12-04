@@ -277,12 +277,14 @@
     <Compile Include="Models\Order.cs">
       <DependentUpon>BookEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderDao.cs" />
     <Compile Include="Models\OrderDetail.cs">
       <DependentUpon>BookEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderStatu.cs">
       <DependentUpon>BookEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderViewModels.cs" />
     <Compile Include="Models\Publisher.cs">
       <DependentUpon>BookEntity.tt</DependentUpon>
     </Compile>

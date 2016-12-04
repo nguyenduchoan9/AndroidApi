@@ -37,13 +37,13 @@ namespace AnroidApi.Models
                     Name = user.Name,
                     Phone = user.Phone,
                     Pass = user.Pass,
-                    DOB = System.DateTime.Now,
+                    DOB = user.DOB,
                     Sex = user.Sex,
-                    RoleID = 2,
-                    StatusID = 1,
+                    RoleID = user.RoleID,
+                    StatusID = user.StatusID,
                     Address = user.Address,
                     RegDate = System.DateTime.Now,
-                    Img_Link = ""
+                    Img_Link = user.Img_Link
                 };
                 db.Users.Add(entity);
                 db.SaveChanges();
