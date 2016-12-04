@@ -27,12 +27,13 @@ namespace AnroidApi.Models
                     Address = address,
                     CreatedDate = System.DateTime.Now,
                 };
-                db.Orders.Add(entity);
+                var order = db.Orders.Add(entity);
                 int ac = db.SaveChanges();
                 if (ac > 0)
                 {
                     OrderDetail od = new OrderDetail
                     {
+                        OrderID= order.ID,
                         BookID = bookId,
                         Quantity = 1,
                         Price = price
