@@ -68,15 +68,15 @@ namespace AnroidApi.Controllers
 
         [HttpGet]
         [Route("Register")]
-        public IHttpActionResult registerAccount(String name, String password, String email, String phone, String sex, String address)
+        public IHttpActionResult registerAccount(String password, String email)
         {
             User user = new User()
             {
-                Name = name,
+                Name = "",
                 Email = email,
-                Phone = phone,
-                Sex = sex.Equals("1") ? true : false,
-                Address = address,
+                Phone = "",
+                Sex = true,
+                Address = "",
                 DOB = System.DateTime.Now,
                 RoleID = 2,
                 Img_Link = "",
